@@ -44,7 +44,7 @@ export function ProcessStage() {
         <header className="grid gap-10 border-b border-black/20 pb-8 lg:grid-cols-[0.65fr_1.35fr] lg:items-end">
           <div>
             <p className="mb-5 text-xs uppercase text-black/45">How we move</p>
-            <p className="text-xs uppercase text-black/45">Since 2003 / Vashi, Navi Mumbai / 22+ years</p>
+            <p className="text-xs uppercase text-black/45">Vashi, Navi Mumbai</p>
           </div>
           <h2 id="process-title" className="text-5xl font-semibold uppercase leading-[0.84] sm:text-7xl lg:text-8xl">From thinking to motion.</h2>
         </header>

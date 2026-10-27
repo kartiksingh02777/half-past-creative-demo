@@ -95,7 +95,7 @@ export function LoadingScreen() {
 
       {/* Bottom control / skip link */}
       <div className="flex w-full max-w-6xl items-center justify-between text-[11px] text-white/40">
-        <span className="font-mono text-[10px]">Since 2003</span>
+        <span className="font-mono text-[10px]">Vashi, Navi Mumbai</span>
         <button
           onClick={handleSkip}
           className="border-b border-white/20 pb-0.5 text-white/60 transition-colors hover:border-white hover:text-white"
