@@ -224,7 +224,7 @@ export function HeroSequence() {
                 <span className="h-px w-8 bg-primary" />
                 {chapter.eyebrow}
               </p>
-              <h1 id={index === 0 ? "hero-title" : undefined} className={`font-semibold uppercase text-base-content [text-shadow:0_5px_36px_rgba(0,0,0,.76)] ${index === 0 ? "text-5xl leading-[0.92] sm:text-7xl lg:text-[6.5rem] xl:text-[7.5rem]" : "text-3xl leading-[0.96] sm:text-4xl md:text-[2.6rem] lg:text-[3.2rem] xl:text-[3.5rem]"} ${chapter.align === "right" ? "md:ml-auto" : ""}`}>
+              <h1 id={index === 0 ? "hero-title" : undefined} className={`font-semibold uppercase text-base-content [text-shadow:0_5px_36px_rgba(0,0,0,.76)] ${index === 0 ? "text-4xl leading-[0.92] sm:text-7xl lg:text-[6.5rem] xl:text-[7.5rem]" : "text-3xl leading-[0.96] sm:text-4xl md:text-[2.6rem] lg:text-[3.2rem] xl:text-[3.5rem]"} ${chapter.align === "right" ? "md:ml-auto" : ""}`}>
                 <span className="block">{chapter.title}</span>
                 <span className="editorial-font mt-1 block normal-case italic text-secondary">{chapter.accent}</span>
               </h1>

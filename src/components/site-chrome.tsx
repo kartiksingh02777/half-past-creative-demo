@@ -10,6 +10,7 @@ import { contact, services } from "@/data/site";
 const navLinks = [
   ["Work", "/work"],
   ["Services", "/services"],
+  ["Studio", "/studio"],
   ["Contact", "/contact"],
 ];
 

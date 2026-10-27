@@ -86,7 +86,7 @@ export function ServicesProof() {
               <span>Toyota Ebella / Launch experience</span><span>Proof in motion</span>
             </div>
             <div className="absolute inset-x-5 bottom-6 text-white sm:inset-x-8 lg:inset-x-10 lg:bottom-8">
-              <p className="max-w-[10ch] text-5xl font-semibold uppercase leading-[0.84] [text-shadow:0_4px_28px_rgba(0,0,0,.9)] sm:text-7xl">The work carries the <span className="editorial-font normal-case italic text-[#82c9e0]">proof.</span></p>
+              <p className="max-w-[10ch] text-4xl font-semibold uppercase leading-[0.88] [text-shadow:0_4px_28px_rgba(0,0,0,.9)] sm:text-7xl">The work carries the <span className="editorial-font normal-case italic text-[#82c9e0]">proof.</span></p>
               <p className="mt-5 max-w-md border-l-2 border-[#d65b4c] pl-4 text-sm leading-6 text-white/82">Original music and live performance built to give a vehicle reveal scale, rhythm, and momentum.</p>
             </div>
           </div>

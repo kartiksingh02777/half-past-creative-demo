@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -22,6 +22,7 @@ const previews: Record<string, string> = {
 
 export function ProjectsInMotion() {
   const root = useRef<HTMLElement>(null);
+  const [activeFilmIndex, setActiveFilmIndex] = useState(0);
 
   useGSAP(
     () => {
@@ -101,15 +102,21 @@ export function ProjectsInMotion() {
 
             {/* Interactive Film Tabs */}
             <div className="my-5 flex flex-wrap gap-2">
-              {projects.map((project) => (
-                <div
+              {projects.map((project, index) => (
+                <button
+                  type="button"
                   key={project.slug}
                   data-film-tab
-                  className="flex items-center gap-2 border border-white/15 bg-black/60 px-3 py-2 text-[11px] uppercase transition-all duration-300 backdrop-blur-[4px]"
+                  onClick={() => setActiveFilmIndex(index)}
+                  className={`flex cursor-pointer items-center gap-2 border px-3 py-2 text-[11px] uppercase transition-all duration-300 backdrop-blur-[4px] ${
+                    activeFilmIndex === index
+                      ? "border-[#82c9e0] bg-black/85 text-white"
+                      : "border-white/15 bg-black/60 text-white/90 hover:border-white/40"
+                  }`}
                 >
                   <span className="font-mono text-[#82c9e0]">{project.number}</span>
-                  <span className="truncate text-white/90">{project.client.split(" ").slice(0, 2).join(" ")}</span>
-                </div>
+                  <span className="truncate">{project.client.split(" ").slice(0, 2).join(" ")}</span>
+                </button>
               ))}
             </div>
 
@@ -119,8 +126,8 @@ export function ProjectsInMotion() {
                 <div
                   key={project.slug}
                   data-film-info
-                  className={`flex flex-col justify-between gap-4 border-l-2 border-[#82c9e0] bg-black/65 p-5 backdrop-blur-[6px] ${
-                    index === 0 ? "relative opacity-100" : "absolute inset-0 opacity-0"
+                  className={`flex flex-col justify-between gap-4 border-l-2 border-[#82c9e0] bg-black/65 p-5 backdrop-blur-[6px] transition-opacity duration-300 ${
+                    index === activeFilmIndex ? "relative opacity-100" : "absolute inset-0 opacity-0 pointer-events-none lg:pointer-events-auto"
                   }`}
                 >
                   <div>
@@ -159,7 +166,9 @@ export function ProjectsInMotion() {
                 <article
                   key={project.slug}
                   data-film-card
-                  className="absolute inset-0 flex flex-col overflow-hidden bg-black"
+                  className={`absolute inset-0 flex flex-col overflow-hidden bg-black transition-opacity duration-300 ${
+                    index === activeFilmIndex ? "opacity-100 z-10" : "opacity-0 z-0 pointer-events-none lg:pointer-events-auto lg:opacity-100"
+                  }`}
                   style={{ zIndex: index + 1 }}
                 >
                   {/* Video Stage */}
