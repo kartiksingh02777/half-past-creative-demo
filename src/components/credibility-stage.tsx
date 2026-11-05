@@ -7,9 +7,18 @@ const partners = [
 ];
 
 const principles = [
-  ["Mission", "UNVERIFIED — Rohan se live site URL maangna hai"],
-  ["Vision", "UNVERIFIED — Rohan se live site URL maangna hai"],
-  ["Values", "UNVERIFIED — Rohan se live site URL maangna hai"],
+  [
+    "Mission",
+    "To help brands grow through a thoughtful mix of strategy, creativity, and execution — work that is clear, effective, and built to impact.",
+  ],
+  [
+    "Vision",
+    "To be a trusted partner in shaping brands where clear thinking, purposeful creativity, and strong execution create lasting business outcomes.",
+  ],
+  [
+    "Values",
+    "Clarity. Craft. Consideration. Continuous growth — connecting businesses with their audiences and ideas with their impact.",
+  ],
 ] as const;
 
 export function CredibilityStage() {
