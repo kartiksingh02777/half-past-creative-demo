@@ -110,10 +110,6 @@ export function PolychromosTunnel() {
             <span className="block" data-tunnel-word>emotion.</span>
           </h2>
 
-          <div className="hidden md:absolute md:right-8 md:top-5 md:block lg:right-12 lg:top-6">
-            <p className="text-right text-[10px] uppercase leading-4 text-base-content/65">Footage study / 01<br />Scroll-linked spatial edit</p>
-          </div>
-
           {/* Slim, elegant bottom control bar fitted directly to content */}
           <div className="pointer-events-auto mt-8 flex items-center justify-between gap-4 border-t border-white/25 bg-black/65 px-4 py-2.5 text-white backdrop-blur-md sm:px-6 md:absolute md:bottom-3 md:left-8 md:right-8 md:mt-0 sm:md:bottom-4 lg:left-12 lg:right-12">
             <div className="hidden items-center gap-3 sm:flex">

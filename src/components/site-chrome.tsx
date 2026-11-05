@@ -97,7 +97,6 @@ export function ContactBand({ dark = false }: { dark?: boolean }) {
         </Link>
         <div className={`mt-8 flex flex-col justify-between gap-3 text-sm sm:flex-row ${dark ? "text-base-content/55" : "text-black/60"}`}>
           <span>{contact.email}</span>
-          <span>Vashi, Navi Mumbai / India</span>
         </div>
       </div>
     </section>

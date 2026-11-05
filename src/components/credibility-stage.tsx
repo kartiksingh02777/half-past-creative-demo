@@ -1,9 +1,15 @@
-const partners = ["TVS Motor", "Faber-Castell", "Birla Opus", "Birla Studios", "Toyota", "Drum Tao"];
+const partners = [
+  "Bourgeois",
+  "Birla Studios",
+  "Brandwidth Solutions",
+  "Miraculous Studios",
+  "Pixellclown Studios",
+];
 
 const principles = [
-  ["Mission", "Make complex ideas clear, memorable, and ready to move."],
-  ["Vision", "Bring strategy and production into one connected creative practice."],
-  ["Values", "Clarity in thinking. Strength in delivery."],
+  ["Mission", "UNVERIFIED — Rohan se live site URL maangna hai"],
+  ["Vision", "UNVERIFIED — Rohan se live site URL maangna hai"],
+  ["Values", "UNVERIFIED — Rohan se live site URL maangna hai"],
 ] as const;
 
 export function CredibilityStage() {
@@ -45,10 +51,9 @@ export function CredibilityStage() {
 
       <div className="border-t border-black/20">
         {principles.map(([label, body], index) => (
-          <article className="grid border-b border-black/20 px-5 py-8 sm:px-8 lg:grid-cols-[220px_1fr_80px] lg:items-center lg:px-12 lg:py-10" data-reveal key={label}>
+          <article className="grid border-b border-black/20 px-5 py-8 sm:px-8 lg:grid-cols-[220px_1fr] lg:items-center lg:px-12 lg:py-10" data-reveal key={label}>
             <p className="text-xs uppercase text-black/45">0{index + 1} / {label}</p>
             <h3 className="mt-5 max-w-5xl text-3xl font-semibold leading-tight sm:text-4xl lg:mt-0 lg:text-5xl">{body}</h3>
-            <span className="mt-5 text-right text-xs text-black/35 lg:mt-0" aria-hidden="true">HPC</span>
           </article>
         ))}
       </div>

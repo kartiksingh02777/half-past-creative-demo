@@ -1,8 +1,6 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { ArrowDown, ArrowRight } from "lucide-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -12,22 +10,30 @@ const FRAME_COUNT = 165;
 const ACTIVE_FRAME_COUNT = 126; // Final chapter climax ends here - eliminates trailing empty frames
 const frameSource = (index: number) => `/media/apache-sequence-v3/frame-${String(index + 1).padStart(4, "0")}.webp`;
 
-const heroChapters = [
+type HeroChapter = {
+  eyebrow: string;
+  title: string;
+  accent: string;
+  copy: string;
+  align: "left" | "right";
+};
+
+const heroChapters: HeroChapter[] = [
   {
-    eyebrow: "Half Past Creative / 01",
+    eyebrow: "",
     title: "Branding. Marketing. Content.",
     accent: "All under one roof.",
     copy: "Where strategy meets storytelling. Over two decades turning ideas into purposeful brand experiences across film, campaigns, and digital platforms.",
     align: "left",
   },
   {
-    eyebrow: "Strategy / Direction",
+    eyebrow: "",
     title: "Clarity in thinking.",
     accent: "Strength in delivery.",
-    copy: "Positioning, audience and culture give the moving image a reason to exist.",
+    copy: "",
     align: "right",
   },
-] as const;
+];
 
 function drawCover(
   canvas: HTMLCanvasElement,
@@ -169,7 +175,6 @@ export function HeroSequence() {
           .to(chapter, { autoAlpha: 1, duration: 0.5 });
       });
       timeline
-        .to("[data-hero-intro]", { opacity: 0, yPercent: -30, duration: 0.16 }, 0.18)
         .to("[data-hero-outro]", { opacity: 1, yPercent: 0, duration: 0.18 }, 0.9);
 
       return () => {
@@ -200,8 +205,6 @@ export function HeroSequence() {
     };
   }, []);
 
-  const loadingPercent = Math.round((loaded / FRAME_COUNT) * 100);
-
   return (
     <section ref={root} className="hero-sequence film-grain relative h-[180svh] bg-base-100 md:h-[200svh]" id="hero" aria-labelledby="hero-title">
       <div className="sticky top-16 h-[calc(100svh-4rem)] overflow-hidden bg-base-100 lg:top-20 lg:h-[calc(100svh-5rem)]">
@@ -209,49 +212,28 @@ export function HeroSequence() {
         <canvas ref={backgroundCanvas} aria-hidden="true" className="absolute inset-0 z-10 hidden h-full w-full md:block" data-hero-canvas="background" />
         <div className="absolute inset-0 z-20 bg-[linear-gradient(90deg,rgba(0,0,0,.58)_0%,rgba(0,0,0,.12)_55%,rgba(0,0,0,.36)_100%)]" />
 
-        <div className="absolute inset-x-5 top-5 z-40 flex justify-between gap-5 text-[10px] uppercase text-white/82 [text-shadow:0_2px_12px_rgba(0,0,0,.95)] sm:inset-x-8 sm:text-xs lg:inset-x-12" data-hero-intro>
-          <span>Media &amp; marketing consultancy</span>
-        </div>
-
         <div className="pointer-events-none absolute inset-x-5 top-[12%] z-30 h-[70%] sm:inset-x-8 lg:inset-x-12 lg:top-[10%]">
           {heroChapters.map((chapter, index) => (
             <div
               className={`absolute inset-x-0 top-0 ${index === 0 ? "opacity-100" : "hidden opacity-0 md:top-[16%] md:block md:w-[min(32rem,42vw)] md:rounded md:border md:border-white/30 md:bg-black/65 md:p-5 md:shadow-[0_20px_60px_rgba(0,0,0,0.5)] md:backdrop-blur-md lg:top-[14%] lg:p-6"} ${chapter.align === "right" ? "md:inset-x-auto md:right-0 md:ml-auto md:text-right" : "md:inset-x-auto md:left-0 md:mr-auto"} ${index === 0 ? "md:max-w-[68rem]" : ""}`}
               data-hero-chapter
-              key={chapter.eyebrow}
+              key={chapter.title}
             >
-              <p className={`mb-3 flex items-center gap-2.5 text-[10px] uppercase tracking-wider text-white/75 [text-shadow:0_2px_12px_rgba(0,0,0,.95)] ${chapter.align === "right" ? "md:justify-end" : ""}`}>
-                <span className="h-px w-8 bg-primary" />
-                {chapter.eyebrow}
-              </p>
+              {chapter.eyebrow ? (
+                <p className={`mb-3 flex items-center gap-2.5 text-[10px] uppercase tracking-wider text-white/75 [text-shadow:0_2px_12px_rgba(0,0,0,.95)] ${chapter.align === "right" ? "md:justify-end" : ""}`}>
+                  <span className="h-px w-8 bg-primary" />
+                  {chapter.eyebrow}
+                </p>
+              ) : null}
               <h1 id={index === 0 ? "hero-title" : undefined} className={`font-semibold uppercase text-base-content [text-shadow:0_5px_36px_rgba(0,0,0,.76)] ${index === 0 ? "text-4xl leading-[0.92] sm:text-7xl lg:text-[6.5rem] xl:text-[7.5rem]" : "text-3xl leading-[0.96] sm:text-4xl md:text-[2.6rem] lg:text-[3.2rem] xl:text-[3.5rem]"} ${chapter.align === "right" ? "md:ml-auto" : ""}`}>
                 <span className="block">{chapter.title}</span>
                 <span className="editorial-font mt-1 block normal-case italic text-secondary">{chapter.accent}</span>
               </h1>
-              <p className={`mt-4 max-w-sm border-l-2 border-primary pl-3.5 text-xs leading-5 text-white/85 sm:text-sm sm:leading-6 ${chapter.align === "right" ? "md:ml-auto md:border-l-0 md:border-r-2 md:pl-0 md:pr-3.5" : ""}`}>{chapter.copy}</p>
+              {chapter.copy ? (
+                <p className={`mt-4 max-w-sm border-l-2 border-primary pl-3.5 text-xs leading-5 text-white/85 sm:text-sm sm:leading-6 ${chapter.align === "right" ? "md:ml-auto md:border-l-0 md:border-r-2 md:pl-0 md:pr-3.5" : ""}`}>{chapter.copy}</p>
+              ) : null}
             </div>
           ))}
-        </div>
-
-        {/* Slim, elegant bottom control bar fitted directly to content */}
-        <div className="absolute inset-x-5 bottom-3 z-50 flex items-center justify-between gap-4 border-t border-white/25 bg-black/65 px-4 py-2.5 text-white backdrop-blur-md sm:inset-x-8 sm:bottom-4 sm:px-6 lg:inset-x-12">
-          <div className="hidden items-center gap-3 sm:flex">
-            <span className="text-[10px] uppercase tracking-wider text-white/60">Frame sequence / {ACTIVE_FRAME_COUNT}</span>
-            <span className="h-1 w-1 rounded-full bg-white/30" />
-            <span className="text-xs text-white/85">Strategy, film, music &amp; motion to final master</span>
-            <span className="h-1 w-1 rounded-full bg-white/30" />
-            <span className="text-[10px] uppercase tracking-wider text-white/50" data-hero-frame-note>
-              {loaded < FRAME_COUNT ? `Loading ${loadingPercent}%` : "Scroll controls time"}
-            </span>
-          </div>
-          <div className="flex items-center gap-2">
-            <Link className="btn btn-sm h-8 min-h-8 border-0 bg-[#d65b4c] px-3.5 text-xs text-white shadow-none hover:bg-[#82c9e0] hover:text-black" href="#projects">
-              Explore work <ArrowRight aria-hidden="true" size={14} />
-            </Link>
-            <a className="btn btn-circle btn-sm h-8 min-h-8 w-8 border-0 bg-[#82c9e0] text-black shadow-none hover:bg-[#f5f1e8]" href="#projects" aria-label="Continue to projects" title="Continue to projects">
-              <ArrowDown aria-hidden="true" size={15} />
-            </a>
-          </div>
         </div>
 
         <p className="pointer-events-none absolute bottom-14 left-1/2 z-40 -translate-x-1/2 text-center text-xs uppercase tracking-widest text-white/80 opacity-0" data-hero-outro>Work enters the frame</p>

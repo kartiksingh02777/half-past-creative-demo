@@ -88,10 +88,6 @@ export function ProjectsInMotion() {
           <div className="flex w-full flex-col justify-between lg:w-[40%] xl:w-[38%]">
             {/* Section Header */}
             <div>
-              <div className="mb-2 flex items-center gap-3 text-[11px] uppercase tracking-wider text-[#82c9e0]">
-                <span className="h-px w-8 bg-[#82c9e0]" />
-                Selected work // 01-05
-              </div>
               <h2 id="projects-title" className="text-4xl font-semibold uppercase leading-[0.9] sm:text-5xl xl:text-6xl">
                 Projects in <span className="editorial-font normal-case italic text-secondary">motion.</span>
               </h2>

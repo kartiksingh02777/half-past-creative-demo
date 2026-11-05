@@ -1,19 +1,14 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { ContactBand, PageEyebrow } from "@/components/site-chrome";
-import { process, services } from "@/data/site";
+import { projects } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "The Studio",
-  description: "The thinking, process, and production philosophy behind Half Past Creative.",
+  title: "The Studio & Project Stack",
+  description: "The thinking, philosophy, and curated project stack by Half Past Creative.",
 };
-
-const principles = [
-  ["Clarity", "Find the real problem and make the answer easy to understand."],
-  ["Craft", "Treat every frame, word, sound, and handoff as part of one experience."],
-  ["Consideration", "Work closely, listen properly, and protect the ambition behind the brief."],
-  ["Continuous growth", "Use every launch, result, and new tool to make the next idea stronger."],
-];
 
 export default function StudioPage() {
   return (
@@ -47,44 +42,69 @@ export default function StudioPage() {
         </div>
       </section>
 
-      <section className="bg-[#f3f1ea] py-24 text-[#050505] lg:py-32">
+      <section className="bg-base-100 py-24 text-base-content lg:py-32" id="project-stack">
         <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-12">
-          <div className="grid gap-8 border-b border-black/20 pb-14 lg:grid-cols-[220px_1fr]" data-reveal>
-            <p className="text-xs uppercase text-black/50">How we work</p>
-            <h2 className="display-font text-5xl leading-[0.95] sm:text-7xl">From thinking to motion.</h2>
+          <div className="mb-14 grid gap-8 border-b border-base-content/15 pb-12 lg:grid-cols-[0.55fr_1.45fr]" data-reveal>
+            <div>
+              <p className="text-xs uppercase text-accent">Selected Work</p>
+              <h2 className="display-font mt-4 text-5xl leading-[0.95] sm:text-7xl">Project Stack</h2>
+            </div>
+            <p className="self-end text-lg leading-8 text-base-content/65">
+              Multiple projects in a continuous vertical stack &mdash; from commercial film and CGI to sonic identities and motion packaging.
+            </p>
           </div>
-          <div>
-            {process.map(([number, phase, title, body]) => (
-              <article className="grid gap-5 border-b border-black/20 py-9 sm:grid-cols-[80px_0.7fr_1.3fr] sm:items-start lg:py-12" data-reveal key={number}>
-                <span className="text-xs text-black/40">{number}</span>
-                <div><p className="text-xs uppercase text-black/45">{phase}</p><h3 className="display-font mt-2 text-3xl sm:text-4xl">{title}</h3></div>
-                <p className="max-w-xl text-lg leading-8 text-black/55">{body}</p>
+
+          <div className="border-t border-base-content/15">
+            {projects.map((project) => (
+              <article
+                key={project.slug}
+                className="group border-b border-base-content/15 py-10 transition-colors hover:bg-base-content/[0.02] lg:py-14"
+                data-reveal
+              >
+                <div className="grid gap-6 lg:grid-cols-[60px_220px_1fr_auto] lg:items-center">
+                  <span className="font-mono text-sm text-accent">{project.number}</span>
+                  <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[2px] bg-base-300">
+                    <Image
+                      src={project.image}
+                      alt={`${project.client} - ${project.shortTitle}`}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="(max-width: 1024px) 100vw, 220px"
+                    />
+                  </div>
+                  <div>
+                    <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-wider text-base-content/50">
+                      <span>{project.client}</span>
+                      <span>•</span>
+                      <span>{project.year}</span>
+                      <span>•</span>
+                      <span className="rounded-full border border-base-content/20 px-2.5 py-0.5 text-[11px] text-base-content/70">
+                        {project.category}
+                      </span>
+                    </div>
+                    <h3 className="display-font mt-3 text-3xl sm:text-4xl">
+                      {project.client} &mdash; {project.shortTitle}
+                    </h3>
+                    <p className="mt-4 max-w-2xl text-base leading-7 text-base-content/65">
+                      {project.description}
+                    </p>
+                  </div>
+                  <div className="mt-2 lg:mt-0">
+                    <Link
+                      href={`/work/${project.slug}`}
+                      className="group/link inline-flex items-center gap-2 rounded-full border border-base-content/25 px-5 py-3 text-sm font-medium transition-colors hover:border-base-content hover:bg-base-content hover:text-base-100"
+                    >
+                      <span>View Project</span>
+                      <ArrowUpRight size={16} className="transition-transform group-hover/link:-translate-y-0.5 group-hover/link:translate-x-0.5" />
+                    </Link>
+                  </div>
+                </div>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-base-200 py-24 text-base-content lg:py-32">
-        <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-12">
-          <div className="grid gap-8 border-b border-base-content/15 pb-14 lg:grid-cols-[220px_1fr]" data-reveal>
-            <p className="text-xs uppercase text-base-content/45">Studio principles</p>
-            <h2 className="display-font text-5xl leading-[0.95] sm:text-7xl">What stays constant while everything else moves.</h2>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4">
-            {principles.map(([name, body], index) => (
-              <article className="border-b border-base-content/15 py-8 sm:border-r sm:px-6 first:pl-0 last:border-r-0 lg:min-h-64 lg:py-10" data-reveal key={name}>
-                <span className="text-xs text-base-content/35">0{index + 1}</span>
-                <h3 className="display-font mt-10 text-3xl">{name}</h3>
-                <p className="mt-5 leading-7 text-base-content/55">{body}</p>
-              </article>
-            ))}
-          </div>
-          <div className="mt-16 flex flex-wrap gap-x-7 gap-y-4 border-t border-base-content/15 pt-7 text-sm text-base-content/50" data-reveal>
-            {services.map((service) => <span key={service.number}>{service.name}</span>)}
-          </div>
-        </div>
-      </section>
       <ContactBand />
     </main>
   );

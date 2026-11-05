@@ -115,7 +115,7 @@ export const services = [
 
 export const process = [
   ["01", "Discover", "Listen & define", "Understand the business, audience, ambition, and the real problem before proposing an answer."],
-  ["02", "Shape", "Strategy & story", "Turn insight into positioning, narrative, and a creative platform designed for the channels that matter."],
+  ["02", "Shape", "Strategy & story", "Turn insight into positioning, narrative, and a creative platform designed for the channels that matters."],
   ["03", "Craft", "Produce & polish", "Bring film, music, animation, and motion together with every frame and every word considered."],
   ["04", "Move", "Launch & learn", "Deliver across platforms and use performance and feedback to strengthen what comes next."],
 ] as const;

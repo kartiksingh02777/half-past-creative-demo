@@ -99,7 +99,6 @@ export function ServicesProof() {
           <ProjectStartLink />
           <div className="mt-8 flex flex-col justify-between gap-3 text-sm text-base-content/55 sm:flex-row">
             <a href={`mailto:${contact.email}`}>{contact.email}</a>
-            <span>Vashi, Navi Mumbai / India</span>
           </div>
         </div>
       </section>

@@ -10,6 +10,29 @@ export const metadata: Metadata = {
   description: "Branding, marketing, film, music, motion, CGI, and AI-led production by Half Past Creative.",
 };
 
+const studioPrinciples = [
+  {
+    number: "01",
+    title: "Clarity",
+    text: "Find the real problem and make the answer easy to understand.",
+  },
+  {
+    number: "02",
+    title: "Craft",
+    text: "Treat every frame, word, sound, and handoff as part of one experience.",
+  },
+  {
+    number: "03",
+    title: "Consideration",
+    text: "Work closely, listen properly, and protect the ambition behind the brief.",
+  },
+  {
+    number: "04",
+    title: "Continuous growth",
+    text: "Use every launch, result, and new tool to make the next idea stronger.",
+  },
+];
+
 export default function ServicesPage() {
   return (
     <main className="pt-16 lg:pt-20">
@@ -61,18 +84,36 @@ export default function ServicesPage() {
         <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-12">
           <div className="grid gap-8 border-b border-base-content/15 pb-14 lg:grid-cols-[220px_1fr]" data-reveal>
             <p className="text-xs uppercase text-base-content/45">How it works</p>
-            <h2 className="display-font text-5xl leading-[0.95] sm:text-7xl">One clear route from brief to impact.</h2>
+            <h2 className="display-font text-5xl leading-[0.95] sm:text-7xl">From thinking to motion.</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4">
             {process.map(([number, phase, title, body]) => (
               <article className="border-b border-base-content/15 py-8 sm:border-r sm:px-6 first:pl-0 last:border-r-0 lg:min-h-80 lg:py-10" data-reveal key={number}>
-                <p className="text-xs text-base-content/40">{number} / {phase}</p>
-                <h3 className="display-font mt-12 text-3xl">{title}</h3>
-                <p className="mt-5 leading-7 text-base-content/55">{body}</p>
+                <p className="text-xs font-mono uppercase tracking-wider text-accent">{number} {phase}</p>
+                <h3 className="display-font mt-8 text-3xl sm:text-4xl">{title}</h3>
+                <p className="mt-5 leading-7 text-base-content/65">{body}</p>
               </article>
             ))}
           </div>
           <div className="mt-12"><Link className="group inline-flex items-center gap-3 border-b border-base-content/50 pb-1 text-sm" href="/studio">See how the studio works <ArrowUpRight className="transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" size={17} aria-hidden="true" /></Link></div>
+        </div>
+      </section>
+
+      <section className="bg-base-200 py-24 text-base-content lg:py-32">
+        <div className="mx-auto max-w-[1600px] px-5 sm:px-8 lg:px-12">
+          <div className="grid gap-8 border-b border-base-content/15 pb-14 lg:grid-cols-[220px_1fr]" data-reveal>
+            <p className="text-xs uppercase text-base-content/45">STUDIO PRINCIPLES</p>
+            <h2 className="display-font text-5xl leading-[0.95] sm:text-7xl">What stays constant while everything else moves.</h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
+            {studioPrinciples.map((principle) => (
+              <article className="border-b border-base-content/15 py-8 sm:border-r sm:px-6 first:pl-0 last:border-r-0 lg:min-h-64 lg:py-10" data-reveal key={principle.number}>
+                <span className="text-xs text-base-content/35">{principle.number}</span>
+                <h3 className="display-font mt-8 text-3xl">{principle.title}</h3>
+                <p className="mt-5 leading-7 text-base-content/55">{principle.text}</p>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
       <ContactBand />

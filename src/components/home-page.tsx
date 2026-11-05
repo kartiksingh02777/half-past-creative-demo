@@ -5,6 +5,7 @@ import { PolychromosTunnel } from "@/components/polychromos-tunnel";
 import { ProjectsInMotion } from "@/components/projects-in-motion";
 import { ServicesProof } from "@/components/services-proof";
 import { SmoothScroll } from "@/components/smooth-scroll";
+import { StudioIntroBand } from "@/components/studio-intro-band";
 
 export function HomePage() {
   return (
@@ -13,6 +14,7 @@ export function HomePage() {
       <SmoothScroll />
       <main className="pt-16 lg:pt-20">
         <HeroSequence />
+        <StudioIntroBand />
         <ProjectsInMotion />
         <PolychromosTunnel />
         <ServicesProof />
